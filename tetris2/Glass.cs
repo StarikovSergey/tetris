@@ -17,7 +17,7 @@ namespace tetris2
                 Point p = new Point(0, i);
                 pList.Add(p);
             }
-            for (int i = 0; i < 79; i++)
+            for (int i = 0; i < 80; i++)
             {
                 Point p = new Point(i, 25);
                 pList.Add(p);
@@ -27,6 +27,16 @@ namespace tetris2
                 Point p = new Point(79, i);
                 pList.Add(p);
             }
+        }
+
+        public List<Point> add(Figure f)
+        {
+            List<Point> fList = f.getCurrent();
+            foreach (Point p in fList)
+            {
+                pList.Add(p);
+            }
+            return pList;
         }
 
     }

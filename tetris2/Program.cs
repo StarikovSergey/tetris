@@ -37,7 +37,7 @@ namespace tetris2
             //    }
             //}
             Glass glass = new Glass();
-            //glass.add(line);
+            glass.add(line);
             glass.DrawFigure('X');
             Console.ReadKey();
         }
