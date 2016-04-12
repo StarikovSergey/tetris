@@ -8,7 +8,7 @@ namespace tetris2
 {
     class ManagerCollide
     {
-        public bool Collide(Figure f1, Figure f2) //f1 - рандомная фигура, f2 - стакан.
+        public bool Collide(Figure f1, Figure f2) 
         {
             if (f1.IsHit(f2))
             {

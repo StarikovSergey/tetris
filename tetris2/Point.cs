@@ -33,7 +33,7 @@ namespace tetris2
         }
 
 
-        public bool IsHit(Point p)
+        public bool IsHit(Point p) //проверка пересечения координат 
         {
             return p.x == this.x && p.y == this.y;
         }

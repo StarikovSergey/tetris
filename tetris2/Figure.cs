@@ -89,7 +89,7 @@ namespace tetris2
             }
 
         }
-        public bool IsHit(Figure figure)
+        public bool IsHit(Figure figure) //пересечение фигуры с фигурой.
         {
             foreach (Point p in pList)
             {
@@ -99,7 +99,7 @@ namespace tetris2
             return false;
         }
 
-        public bool IsHit(Point point)
+        public bool IsHit(Point point) //пересечение фигуры с точкой.
         {
             List<Point> tempList = getCurrent();
 
