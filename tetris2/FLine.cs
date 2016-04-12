@@ -34,15 +34,15 @@ namespace tetris2
         //        }
         //    }
 
-        //    public void HandleKey(ConsoleKey key)
-        //    {
-        //        if (key == ConsoleKey.LeftArrow)
-        //            moveLeftPerStep();
-        //        else if (key == ConsoleKey.RightArrow)
-        //            moveRightPerStep();
-        //        //else if (key == ConsoleKey.DownArrow)
-        //        //    moveDownPerStep();
-        //    }
+        public void HandleKey(ConsoleKey key)
+        {
+            if (key == ConsoleKey.LeftArrow)
+                moveLeftPerStep();
+            else if (key == ConsoleKey.RightArrow)
+                moveRightPerStep();
+            //else if (key == ConsoleKey.DownArrow)
+            //    moveDownPerStep();
+        }
 
         //}
     }

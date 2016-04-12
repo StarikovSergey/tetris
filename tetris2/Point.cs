@@ -21,7 +21,22 @@ namespace tetris2
             this.y = y;
         }
 
+        public bool IsHit(Figure figure)
+        {
+            List<Point> pList = new List<Point>();
+            foreach (var p in pList)
+            {
+                if (figure.IsHit(p))
+                    return true;
+            }
+            return false;
+        }
 
+
+        public bool IsHit(Point p)
+        {
+            return p.x == this.x && p.y == this.y;
+        }
 
 
 
@@ -33,11 +48,8 @@ namespace tetris2
         //    this.y = y;
         //    this.sym = sym;
         //}
-        
-        //public bool IsHit(Point p)
-        //{
-        //    return p.x == this.x && p.y == this.y;
-        //}
+
+
 
         //public void Draw(char sym)
         //{
