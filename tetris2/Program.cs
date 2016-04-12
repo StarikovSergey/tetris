@@ -13,30 +13,32 @@ namespace tetris2
         static void Main(string[] args)
         {
             FLine line = new FLine();
-            line.DrawFigure('X');
-            FLine downLine = new FLine(0, 79, 24, '+');
-            downLine.DrawFigure('#');
+            //line.DrawFigure('X');
+            //FLine downLine = new FLine(0, 79, 24, '+');
+            //downLine.DrawFigure('#');
 
-            while (true)
-            {
-                if (downLine.IsHit(line))
-                {
-                    break;
-                }
-                else
-                {
-                    line.moveDownPerStep();
-                    line.DrawFigure('X');
-                }
-                Thread.Sleep(1000);
+            //while (true)
+            //{
+            //    if (downLine.IsHit(line))
+            //    {
+            //        break;
+            //    }
+            //    else
+            //    {
+            //        line.moveDownPerStep();
+            //        line.DrawFigure('X');
+            //    }
+            //    Thread.Sleep(1000);
 
-                if (Console.KeyAvailable)
-                {
-                    ConsoleKeyInfo key = Console.ReadKey();
-                    line.HandleKey(key.Key);
-                }
-            }
-            Console.WriteLine("Game Over");
+            //    if (Console.KeyAvailable)
+            //    {
+            //        ConsoleKeyInfo key = Console.ReadKey();
+            //        line.HandleKey(key.Key);
+            //    }
+            //}
+            Glass glass = new Glass();
+            //glass.add(line);
+            glass.DrawFigure('X');
             Console.ReadKey();
         }
     }

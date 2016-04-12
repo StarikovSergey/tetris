@@ -10,7 +10,7 @@ namespace tetris2
     {
         protected Point currentPos;
         protected Point lastPos;
-        //protected List<Point> pList;
+        protected List<Point> pList;
 
         public Figure()
         {
@@ -42,7 +42,7 @@ namespace tetris2
                 tempP.y = currentPos.y + p.y;
                 currentFigure.Add(tempP);
             }
-           return currentFigure;
+            return currentFigure;
         }
 
         public void moveDownPerStep()
@@ -78,41 +78,41 @@ namespace tetris2
 
 
 
-    //    public void DrawFigure(char sym)
-    //    {
-    //        List<Point> tempList = getCurrent();
+        public void DrawFigure(char sym)
+        {
+            List<Point> tempList = getCurrent();
 
-    //        foreach (Point p in tempList)
-    //        {
-    //            Console.SetCursorPosition(p.x, p.y);
-    //            Console.Write(sym);
-    //        }
+            foreach (Point p in tempList)
+            {
+                Console.SetCursorPosition(p.x, p.y);
+                Console.Write(sym);
+            }
 
-    //    }
+        }
 
-    //    internal bool IsHit(Figure figure)
-    //    {
-    //        foreach (var p in pList)
-    //        {
-    //            if (figure.IsHit(p))
-    //                return true;
-    //        }
-    //        return false;
-    //    }
+        //    internal bool IsHit(Figure figure)
+        //    {
+        //        foreach (var p in pList)
+        //        {
+        //            if (figure.IsHit(p))
+        //                return true;
+        //        }
+        //        return false;
+        //    }
 
-    //    private bool IsHit(Point point)
-    //    {
-    //        List<Point> tempList = getCurrent();
+        //    private bool IsHit(Point point)
+        //    {
+        //        List<Point> tempList = getCurrent();
 
-    //        foreach (var p in tempList)
-    //        {
-    //            if (p.IsHit(point))
-    //                return true;
-    //        }
-    //        return false;
-    //    }
+        //        foreach (var p in tempList)
+        //        {
+        //            if (p.IsHit(point))
+        //                return true;
+        //        }
+        //        return false;
+        //    }
 
-        
-    //}
 
+        //}
+    }
 }

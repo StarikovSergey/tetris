@@ -11,7 +11,7 @@ namespace tetris2
         public FLine()
         {
             pList = new List<Point>();
-            
+
             Point p1 = new Point(0, 0);
             Point p2 = new Point(0, 1);
             Point p3 = new Point(0, 2);
@@ -24,25 +24,26 @@ namespace tetris2
 
         }
 
-    //    public FLine(int xLeft, int xRight, int y, char sym)
-    //    {
-    //        pList = new List<Point>();
-    //        for (int x = xLeft; x <= xRight; x++)
-    //        {
-    //            Point p = new Point(x, y, sym);
-    //            pList.Add(p);
-    //        }
-    //    }
+        //    public FLine(int xLeft, int xRight, int y, char sym)
+        //    {
+        //        pList = new List<Point>();
+        //        for (int x = xLeft; x <= xRight; x++)
+        //        {
+        //            Point p = new Point(x, y, sym);
+        //            pList.Add(p);
+        //        }
+        //    }
 
-    //    public void HandleKey(ConsoleKey key)
-    //    {
-    //        if (key == ConsoleKey.LeftArrow)
-    //            moveLeftPerStep();
-    //        else if (key == ConsoleKey.RightArrow)
-    //            moveRightPerStep();
-    //        //else if (key == ConsoleKey.DownArrow)
-    //        //    moveDownPerStep();
-    //    }
+        //    public void HandleKey(ConsoleKey key)
+        //    {
+        //        if (key == ConsoleKey.LeftArrow)
+        //            moveLeftPerStep();
+        //        else if (key == ConsoleKey.RightArrow)
+        //            moveRightPerStep();
+        //        //else if (key == ConsoleKey.DownArrow)
+        //        //    moveDownPerStep();
+        //    }
 
-    //}
+        //}
+    }
 }
