@@ -8,26 +8,35 @@ namespace tetris2
 {
     class Glass: Figure
     {
-        public Glass()
+        public Glass(int xLeft, int xRight )
         {
             pList = new List<Point>();
 
-            for (int i = 0; i < 25; i++)
+            for (int i = 0; i < Console.BufferHeight-1; i++)
             {
-                Point p = new Point(0, i);
+                Point p = new Point(xLeft, i);
                 pList.Add(p);
             }
-            for (int i = 0; i < 80; i++)
+
+            for (int i = 0; i < Console.BufferHeight-1; i++)
             {
-                Point p = new Point(i, 25);
-                pList.Add(p);
-            }
-            for (int i = 0; i < 25; i++)
-            {
-                Point p = new Point(79, i);
+                Point p = new Point(xRight, i);
                 pList.Add(p);
             }
         }
+
+        public Glass(int y)
+        {
+            pList = new List<Point>();
+
+            for (int i = 0; i < Console.BufferWidth; i++)
+            {
+                Point p = new Point(i,y);
+                pList.Add(p);
+            }
+
+        }
+
 
         public List<Point> add(Figure f)
         {

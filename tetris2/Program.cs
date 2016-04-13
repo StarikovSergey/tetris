@@ -12,11 +12,14 @@ namespace tetris2
     {
         static void Main(string[] args)
         {
+            Console.SetBufferSize(80, 25);
             FLine line = new FLine();
             //line.DrawFigure('X');
-            Glass glass = new Glass();
-           
-            glass.DrawFigure('X');
+            Glass bottom = new Glass(Console.BufferHeight-1);
+            Glass walls = new Glass(0, 79);
+
+            bottom.DrawFigure('#');
+            walls.DrawFigure('X');
 
             while (true)
             {
@@ -26,7 +29,7 @@ namespace tetris2
                     line.HandleKey(key.Key);
                 }
                 ManagerCollide mc = new ManagerCollide();
-                if ( mc.Collide(glass,line))
+                if ( mc.Collide(bottom,line))
                 {
                     break;
                 }
