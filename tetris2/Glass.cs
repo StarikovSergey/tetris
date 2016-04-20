@@ -62,15 +62,15 @@ namespace tetris2
         public List<Point> GetList()
         {
             List<Point> pList = new List<Point>();
-            pList.AddRange(bottom.getCurrent());
-            pList.AddRange(walls.getCurrent());
+            pList.AddRange(bottom.GetCurrent());
+            pList.AddRange(walls.GetCurrent());
             return pList;
         }
 
         public void addtoBattom(Figure f)
         {
-            List<Point> pList = bottom.getCurrent(); 
-            List<Point> fList = f.getCurrent();
+            List<Point> pList = bottom.GetCurrent(); 
+            List<Point> fList = f.GetCurrent();
            
             pList.AddRange(fList);
             bottom.SetList(pList);

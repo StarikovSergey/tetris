@@ -12,12 +12,22 @@ namespace tetris2
     {
         static void Main(string[] args)
         {
-            Console.SetBufferSize(80, 25);
+            Console.SetBufferSize(80, 25); //размер консоли
             RenderingConsole Render = new RenderingConsole();  //отрисовщик
             Glass glass = new Glass(); //стакан
-            FLine line = new FLine();  //фигура
-            line.SetStartPosition();
+            FigureI figureI = new FigureI();
+            FigureJ figureJ = new FigureJ();
+            FigureL figureL = new FigureL();
+            FigureO figureO = new FigureO();
+            FigureS figureS = new FigureS();
+            FigureT figureT = new FigureT();
+            FigureZ figureZ = new FigureZ();
 
+            Figure[] arrFugures = new Figure[] { figureI, figureJ, figureL, figureO, figureS, figureT, figureZ };
+            Random random = new Random();
+            Figure randomFigure = arrFugures[random.Next(0, 6)];
+
+            randomFigure.SetStartPosition();
 
             while (true)
             {
@@ -26,36 +36,38 @@ namespace tetris2
                 if (Console.KeyAvailable)   //проверка нажатия клавиш
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
-                    line.HandleKey(key.Key);
+                    randomFigure.HandleKey(key.Key);
                     if (key.Key == ConsoleKey.Enter)
                     {
-                        if (mc.Collide(glass.GetFigureWalls(), line))
+                        if (mc.Collide(glass.GetFigureWalls(), randomFigure))
                         {
-                            line.RevertRotate();
+                            randomFigure.RevertRotate();
                         }
                     }
                     else if (key.Key == ConsoleKey.LeftArrow || key.Key == ConsoleKey.RightArrow)
                     {
-                        if (mc.Collide(glass.GetFigureWalls(), line))
+                        if (mc.Collide(glass.GetFigureWalls(), randomFigure))
                         {
-                            line.DiscardLastMove();
+                            randomFigure.DiscardLastMove();
                         }
                     }
                 }
 
-                if (mc.Collide(glass.GetFigureBottom(), line))
+                if (mc.Collide(glass.GetFigureBottom(), randomFigure))
                 {
-                    line.DiscardLastMove();
-                    glass.addtoBattom(line);
+
+                    randomFigure.DiscardLastMove();
+                    glass.addtoBattom(randomFigure);
                     Render.Draw(glass.GetList(), '*');     //отрисовка стакана
-                    line.SetStartPosition();
+                    randomFigure = arrFugures[random.Next(0, 6)];
+                    randomFigure.SetStartPosition();
                 }
                 else
                 {
                     Render.Draw(glass.GetList(), '*');     //отрисовка стакана
-                    Render.Draw(line.getCurrent(), '=');   // отрисовка фигуры
-                    line.moveDownPerStep();
-                    Thread.Sleep(100);  //задержка
+                    Render.Draw(randomFigure.GetCurrent(), '=');   // отрисовка фигуры
+                    randomFigure.moveDownPerStep();
+                    Thread.Sleep(400);  //задержка
                     Render.Clear(); //очистка экрана
                 }
             }

@@ -43,8 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FigureO.cs" />
     <Compile Include="Figure.cs" />
-    <Compile Include="FLine.cs" />
+    <Compile Include="FigureI.cs" />
+    <Compile Include="FigureJ.cs" />
+    <Compile Include="FigureL.cs" />
+    <Compile Include="FigureS.cs" />
+    <Compile Include="FigureT.cs" />
+    <Compile Include="FigureZ.cs" />
     <Compile Include="Glass.cs" />
     <Compile Include="ManagerCollide.cs" />
     <Compile Include="Point.cs" />

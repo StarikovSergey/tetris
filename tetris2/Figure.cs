@@ -44,7 +44,7 @@ namespace tetris2
             currentPos.y = p.y;
         }
 
-        public List<Point> getCurrent()
+        public List<Point> GetCurrent()
         {
             List<Point> currentFigure = new List<Point>();
             foreach (Point p in pList)
@@ -103,5 +103,20 @@ namespace tetris2
             currentPos.x = lastPos.x;
             currentPos.y = lastPos.y;
         }
+
+
+        public void HandleKey(ConsoleKey key)
+        {
+            if (key == ConsoleKey.LeftArrow)
+                moveLeftPerStep();
+            else if (key == ConsoleKey.RightArrow)
+                moveRightPerStep();
+            else if (key == ConsoleKey.DownArrow)
+                moveDownPerStep();
+            //    moveFastDownPerStep();
+            else if (key == ConsoleKey.Enter)
+                moveRotate();
+        }
     }
+
 }

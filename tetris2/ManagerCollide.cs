@@ -10,8 +10,8 @@ namespace tetris2
     {
         public bool Collide(Figure f1, Figure f2)
         {
-            List<Point> pList1 = f1.getCurrent();
-            List<Point> pList2 = f2.getCurrent();
+            List<Point> pList1 = f1.GetCurrent();
+            List<Point> pList2 = f2.GetCurrent();
 
             foreach (Point pf1 in pList1)
             {
