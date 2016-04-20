@@ -54,6 +54,7 @@ namespace tetris2
                 {
                     Render.Draw(glass.GetList(), '*');     //отрисовка стакана
                     Render.Draw(line.getCurrent(), '=');   // отрисовка фигуры
+                    line.moveDownPerStep();
                     Thread.Sleep(100);  //задержка
                     Render.Clear(); //очистка экрана
                 }
