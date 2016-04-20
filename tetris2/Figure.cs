@@ -73,7 +73,8 @@ namespace tetris2
 
         public void SetStartPosition()
         {
-            setPos(2, 0);
+            Point point = new Point(20, 0);   
+            setPos(point);
         }
 
         public void moveRotate()
@@ -100,9 +101,6 @@ namespace tetris2
         {
             currentPos.x = lastPos.x;
             currentPos.y = lastPos.y;
-
-
         }
-
     }
 }

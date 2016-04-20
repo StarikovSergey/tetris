@@ -12,7 +12,7 @@ namespace tetris2
         {
             List<Point> pList1 = f1.getCurrent();
             List<Point> pList2 = f2.getCurrent();
-            
+
             foreach (Point pf1 in pList1)
             {
                 foreach (Point pf2 in pList2)
@@ -21,25 +21,9 @@ namespace tetris2
                     {
                         return true;
                     }
-                    
+
                 }
             }
-            return false;
-        }
-
-        internal bool Collide(Glass glass, FLine line)
-        {
-            Figure bottom = glass.GetFigureBottom();
-            Figure walls = glass.GetFigureWalls();
-            if (Collide(walls, line))
-            {
-                return true;
-            }
-            else if (Collide(bottom, line))
-            {
-                return true;
-            }
-
             return false;
         }
     }

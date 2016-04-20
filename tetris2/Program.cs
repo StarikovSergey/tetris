@@ -21,20 +21,29 @@ namespace tetris2
 
             while (true)
             {
-                ManagerCollide mc = new ManagerCollide();     
+                ManagerCollide mc = new ManagerCollide();
 
                 if (Console.KeyAvailable)   //проверка нажатия клавиш
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
                     line.HandleKey(key.Key);
+                    if (key.Key == ConsoleKey.Enter)
+                    {
+                        if (mc.Collide(glass.GetFigureWalls(), line))
+                        {
+                            line.RevertRotate();
+                        }
+                    }
+                    else if (key.Key == ConsoleKey.LeftArrow || key.Key == ConsoleKey.RightArrow)
+                    {
+                        if (mc.Collide(glass.GetFigureWalls(), line))
+                        {
+                            line.DiscardLastMove();
+                        }
+                    }
                 }
 
-                //    if (mc.Collide(glass, line))
-                //    {
-                //    line.RevertRotate();
-                //    line.DiscardLastMove();
-                //    }
-                if (mc.Collide(glass, line))
+                if (mc.Collide(glass.GetFigureBottom(), line))
                 {
                     line.DiscardLastMove();
                     glass.addtoBattom(line);
