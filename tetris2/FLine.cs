@@ -20,19 +20,7 @@ namespace tetris2
             pList.Add(p2);
             pList.Add(p3);
             pList.Add(p4);
-
-
         }
-
-        //    public FLine(int xLeft, int xRight, int y, char sym)
-        //    {
-        //        pList = new List<Point>();
-        //        for (int x = xLeft; x <= xRight; x++)
-        //        {
-        //            Point p = new Point(x, y, sym);
-        //            pList.Add(p);
-        //        }
-        //    }
 
         public void HandleKey(ConsoleKey key)
         {
@@ -40,10 +28,11 @@ namespace tetris2
                 moveLeftPerStep();
             else if (key == ConsoleKey.RightArrow)
                 moveRightPerStep();
-            //else if (key == ConsoleKey.DownArrow)
-            //    moveDownPerStep();
+            else if (key == ConsoleKey.DownArrow)
+                moveDownPerStep();
+            //    moveFastDownPerStep();
+            else if (key == ConsoleKey.Enter)
+                moveRotate();
         }
-
-        //}
     }
 }

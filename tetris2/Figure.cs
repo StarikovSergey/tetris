@@ -16,6 +16,18 @@ namespace tetris2
         {
             currentPos = new Point();
             lastPos = new Point();
+            pList = new List<Point>();
+        }
+
+        public Figure(List<Point> pList)
+        {
+            currentPos = new Point();
+            this.pList = pList;
+        }
+
+        public void SetList(List<Point> pList)
+        {
+            this.pList = pList;
         }
 
         private void setPos(int x, int y)
@@ -59,6 +71,11 @@ namespace tetris2
             setPos(currentPos.x + 1, currentPos.y);
         }
 
+        public void SetStartPosition()
+        {
+            setPos(2, 0);
+        }
+
         public void moveRotate()
         {
             foreach (Point p in pList)
@@ -69,46 +86,22 @@ namespace tetris2
             }
         }
 
-        public void DiscardLastMove()
-        {
-            currentPos = lastPos;
-        }
-
-
-
-
-
-        public void DrawFigure(char sym)
-        {
-            List<Point> tempList = getCurrent();
-
-            foreach (Point p in tempList)
-            {
-                Console.SetCursorPosition(p.x, p.y);
-                Console.Write(sym);
-            }
-
-        }
-        public bool IsHit(Figure figure) //пересечение фигуры с фигурой.
+        public void RevertRotate()
         {
             foreach (Point p in pList)
             {
-                if (figure.IsHit(p))
-                    return true;
+                int tepm = p.x;
+                p.x = p.y;
+                p.y = -(tepm);
             }
-            return false;
         }
 
-        public bool IsHit(Point point) //пересечение фигуры с точкой.
+        public void DiscardLastMove()
         {
-            List<Point> tempList = getCurrent();
+            currentPos.x = lastPos.x;
+            currentPos.y = lastPos.y;
 
-            foreach (Point p in tempList)
-            {
-                if (p.IsHit(point))
-                    return true;
-            }
-            return false;
+
         }
 
     }

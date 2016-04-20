@@ -6,46 +6,75 @@ using System.Threading.Tasks;
 
 namespace tetris2
 {
-    class Glass: Figure
-    {
-        public Glass(int xLeft, int xRight )
-        {
-            pList = new List<Point>();
+    class Glass
+   {
+        protected Figure walls;
+        protected Figure bottom;
 
-            for (int i = 0; i < Console.BufferHeight-1; i++)
+
+        public Glass()
+        {
+            walls = new Figure(GetWalls(0, 39));
+            bottom = new Figure(GetBottom(Console.BufferHeight - 1));
+          
+        }
+
+        public List<Point> GetWalls(int xLeft, int xRight)
+        {
+            List<Point> pList = new List<Point>();
+
+            for (int i = 0; i < Console.BufferHeight - 1; i++)
             {
                 Point p = new Point(xLeft, i);
                 pList.Add(p);
             }
 
-            for (int i = 0; i < Console.BufferHeight-1; i++)
+            for (int i = 0; i < Console.BufferHeight - 1; i++)
             {
                 Point p = new Point(xRight, i);
                 pList.Add(p);
             }
+            return pList;
         }
 
-        public Glass(int y)
+        public List<Point> GetBottom(int y)
         {
-            pList = new List<Point>();
+           List<Point> pList = new List<Point>();
 
-            for (int i = 0; i < Console.BufferWidth; i++)
+            for (int i = 0; i < 40; i++)
             {
-                Point p = new Point(i,y);
-                pList.Add(p);
-            }
-
-        }
-
-
-        public List<Point> add(Figure f)
-        {
-            List<Point> fList = f.getCurrent();
-            foreach (Point p in fList)
-            {
+                Point p = new Point(i, y);
                 pList.Add(p);
             }
             return pList;
+        }
+
+        public Figure GetFigureBottom()
+        {
+            return bottom;
+        }
+
+        public Figure GetFigureWalls()
+        {
+            return walls;
+        }
+
+        public List<Point> GetList()
+        {
+            List<Point> pList = new List<Point>();
+            pList.AddRange(bottom.getCurrent());
+            pList.AddRange(walls.getCurrent());
+            return pList;
+        }
+
+        public void addtoBattom(Figure f)
+        {
+            List<Point> pList = bottom.getCurrent(); 
+            List<Point> fList = f.getCurrent();
+           
+            pList.AddRange(fList);
+            bottom.SetList(pList);
+
         }
 
     }

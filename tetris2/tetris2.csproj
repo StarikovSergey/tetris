@@ -50,6 +50,8 @@
     <Compile Include="Point.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Render.cs" />
+    <Compile Include="RenderingConsole.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

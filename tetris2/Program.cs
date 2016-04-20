@@ -13,38 +13,41 @@ namespace tetris2
         static void Main(string[] args)
         {
             Console.SetBufferSize(80, 25);
-            FLine line = new FLine();
-            //line.DrawFigure('X');
-            Glass bottom = new Glass(Console.BufferHeight-1);
-            Glass walls = new Glass(0, 79);
+            RenderingConsole Render = new RenderingConsole();  //отрисовщик
+            Glass glass = new Glass(); //стакан
+            FLine line = new FLine();  //фигура
+            line.SetStartPosition();
 
-            bottom.DrawFigure('#');
-            walls.DrawFigure('X');
 
             while (true)
             {
-                if (Console.KeyAvailable)
+                ManagerCollide mc = new ManagerCollide();     
+
+                if (Console.KeyAvailable)   //проверка нажатия клавиш
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
                     line.HandleKey(key.Key);
                 }
-                ManagerCollide mc = new ManagerCollide();
-                if ( mc.Collide(bottom,line))
+
+                //    if (mc.Collide(glass, line))
+                //    {
+                //    line.RevertRotate();
+                //    line.DiscardLastMove();
+                //    }
+                if (mc.Collide(glass, line))
                 {
-                    break;
+                    line.DiscardLastMove();
+                    glass.addtoBattom(line);
+                    Render.Draw(glass.GetList(), '*');     //отрисовка стакана
+                    line.SetStartPosition();
                 }
                 else
                 {
-                    line.moveDownPerStep();
-                    line.DrawFigure('X');
+                    Render.Draw(glass.GetList(), '*');     //отрисовка стакана
+                    Render.Draw(line.getCurrent(), '=');   // отрисовка фигуры
+                    Thread.Sleep(100);  //задержка
+                    Render.Clear(); //очистка экрана
                 }
-                Thread.Sleep(1000);
-
-                //if (Console.KeyAvailable)
-                //{
-                //    ConsoleKeyInfo key = Console.ReadKey();
-                //    line.HandleKey(key.Key);
-                //}
             }
             Console.WriteLine("Game Over");
             Console.ReadKey();
