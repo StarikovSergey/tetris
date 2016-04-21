@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace tetris2
 {
     class Glass
-   {
+    {
         protected Figure walls;
         protected Figure bottom;
 
@@ -16,7 +16,7 @@ namespace tetris2
         {
             walls = new Figure(GetWalls(0, 39));
             bottom = new Figure(GetBottom(Console.BufferHeight - 1));
-          
+
         }
 
         public List<Point> GetWalls(int xLeft, int xRight)
@@ -39,7 +39,7 @@ namespace tetris2
 
         public List<Point> GetBottom(int y)
         {
-           List<Point> pList = new List<Point>();
+            List<Point> pList = new List<Point>();
 
             for (int i = 0; i < 40; i++)
             {
@@ -69,9 +69,9 @@ namespace tetris2
 
         public void addtoBattom(Figure f)
         {
-            List<Point> pList = bottom.GetCurrent(); 
+            List<Point> pList = bottom.GetCurrent();
             List<Point> fList = f.GetCurrent();
-           
+
             pList.AddRange(fList);
             bottom.SetList(pList);
 

@@ -15,7 +15,7 @@ namespace tetris2
             Console.SetBufferSize(80, 25); //размер консоли
             RenderingConsole Render = new RenderingConsole();  //отрисовщик
             Glass glass = new Glass(); //стакан
-            FigureI figureI = new FigureI();
+            FigureI figureI = new FigureI();    //фигуры
             FigureJ figureJ = new FigureJ();
             FigureL figureL = new FigureL();
             FigureO figureO = new FigureO();
@@ -23,8 +23,8 @@ namespace tetris2
             FigureT figureT = new FigureT();
             FigureZ figureZ = new FigureZ();
 
-            Figure[] arrFugures = new Figure[] { figureI, figureJ, figureL, figureO, figureS, figureT, figureZ };
-            Random random = new Random();
+            Figure[] arrFugures = new Figure[] { figureI, figureJ, figureL, figureO, figureS, figureT, figureZ }; //массив фигур
+            Random random = new Random();  //экз. класса Random
             Figure randomFigure = arrFugures[random.Next(0, 6)];
 
             randomFigure.SetStartPosition();
