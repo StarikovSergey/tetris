@@ -51,6 +51,7 @@
     <Compile Include="FigureS.cs" />
     <Compile Include="FigureT.cs" />
     <Compile Include="FigureZ.cs" />
+    <Compile Include="Game.cs" />
     <Compile Include="Glass.cs" />
     <Compile Include="ManagerCollide.cs" />
     <Compile Include="Point.cs" />

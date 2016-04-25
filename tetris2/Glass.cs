@@ -14,22 +14,22 @@ namespace tetris2
 
         public Glass()
         {
-            walls = new Figure(GetWalls(0, 39));
-            bottom = new Figure(GetBottom(Console.BufferHeight - 1));
+            walls = new Figure(GetWalls(0, 39,24));
+            bottom = new Figure(GetBottom(24));
 
         }
 
-        public List<Point> GetWalls(int xLeft, int xRight)
+        public List<Point> GetWalls(int xLeft, int xRight, int y)
         {
             List<Point> pList = new List<Point>();
 
-            for (int i = 0; i < Console.BufferHeight - 1; i++)
+            for (int i = 4; i < y; i++)
             {
                 Point p = new Point(xLeft, i);
                 pList.Add(p);
             }
 
-            for (int i = 0; i < Console.BufferHeight - 1; i++)
+            for (int i = 4; i < y; i++)
             {
                 Point p = new Point(xRight, i);
                 pList.Add(p);
@@ -68,6 +68,10 @@ namespace tetris2
         }
 
         public void addtoBattom(Figure f)
+        /*если в момент соприсокновения стакана с фигурой нажать <- , ->  или вниз
+        - фигура не добавляется в стакан, а исчезает.
+        так же если зажать одну из клавишь управления происходит залипание , 
+        фигура становиться не управляемой и так же не добавляется в стакан, а исчезает.*/
         {
             List<Point> pList = bottom.GetCurrent();
             List<Point> fList = f.GetCurrent();

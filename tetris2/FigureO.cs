@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 namespace tetris2
 {
 
-    //не верно работает добавление в стакан. добавляются только 2 нижние точки.
     class FigureO : Figure
     {
         public FigureO()

@@ -61,6 +61,12 @@ namespace tetris2
         {
             setPos(currentPos.x, currentPos.y + 1);
         }
+        
+        //public void moveDownFast()
+        //{
+        //        setPos(currentPos.x, currentPos.y + 1);
+        //}
+
         public void moveLeftPerStep()
         {
             setPos(currentPos.x - 1, currentPos.y);
@@ -74,7 +80,7 @@ namespace tetris2
         public void SetStartPosition()
         {
                
-            setPos(20, 0);
+            setPos(1, 4);
         }
 
 
@@ -104,19 +110,18 @@ namespace tetris2
             currentPos.y = lastPos.y;
         }
 
+        //public void HandleKey(ConsoleKey key)  //клавиши управления
+        //{
+        //    if (key == ConsoleKey.LeftArrow)
+        //        moveLeftPerStep();
+        //    else if (key == ConsoleKey.RightArrow)
+        //        moveRightPerStep();
+        //    else if (key == ConsoleKey.DownArrow)
+        //        moveDownPerStep();
+        //    else if (key == ConsoleKey.Enter)
+        //        moveRotate();
+        //}
 
-        public void HandleKey(ConsoleKey key)
-        {
-            if (key == ConsoleKey.LeftArrow)
-                moveLeftPerStep();
-            else if (key == ConsoleKey.RightArrow)
-                moveRightPerStep();
-            else if (key == ConsoleKey.DownArrow)
-                moveDownPerStep();
-            //    moveFastDownPerStep();
-            else if (key == ConsoleKey.Enter)
-                moveRotate();
-        }
     }
 
 }
