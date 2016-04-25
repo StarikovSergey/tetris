@@ -20,7 +20,6 @@ namespace tetris2
             Game game = new Game();
             Figure[] arrF = game.CreateArrFigure();
             Figure randomFigure = game.GetRandomFigure(arrF);
-            //randomFigure.SetStartPosition();
             ManagerCollide mc = new ManagerCollide();
 
 
@@ -71,15 +70,11 @@ namespace tetris2
                 //если просходит коллизия между дном стакана и фигурой
                 //фигура откатывается в предыдущую позицию, добавляется в стакан и отрисовывается.
                 //далее рандомной фируге присваевается новое значение и она устанавливается в стартовую позицию.
-
-                /*почему то запоминается позиция в которой фигура прилипла к дну и в следующий раз когда эта
-                фигура выпадает она выпадает в том же положении. При этом рандом работает.*/
                 {
                     randomFigure.DiscardLastMove();
                     glass.addtoBattom(randomFigure);
                     Render.Draw(glass.GetList(), '*');
                     randomFigure = game.GetRandomFigure(arrF);
-                    //randomFigure.SetStartPosition();
                 }
                 else
                 /*иначе если коллизии не произошло*/
