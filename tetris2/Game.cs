@@ -8,8 +8,7 @@ namespace tetris2
 {
     class Game
     {
-        public Game()
-        { }
+        Random random = new Random();
 
         public Figure[] CreateArrFigure()
         {
@@ -27,12 +26,8 @@ namespace tetris2
 
         public Figure GetRandomFigure(Figure[] arrFigures)
         {
-
-            Random random = new Random();
-
             Figure randomFigure = arrFigures[random.Next(arrFigures.Length)];
             return randomFigure;
-
         }
 
        
