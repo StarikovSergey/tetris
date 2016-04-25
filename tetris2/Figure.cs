@@ -115,19 +115,6 @@ namespace tetris2
             currentPos.x = lastPos.x;
             currentPos.y = lastPos.y;
         }
-
-        //public void HandleKey(ConsoleKey key)  //клавиши управления
-        //{
-        //    if (key == ConsoleKey.LeftArrow)
-        //        moveLeftPerStep();
-        //    else if (key == ConsoleKey.RightArrow)
-        //        moveRightPerStep();
-        //    else if (key == ConsoleKey.DownArrow)
-        //        moveDownPerStep();
-        //    else if (key == ConsoleKey.Enter)
-        //        moveRotate();
-        //}
-
     }
 
 }
