@@ -12,8 +12,8 @@ namespace tetris2
         protected Point lastPos;
         protected List<Point> pList;
         //можно ли присвоить констанкте координаты точки?????
-        //const Point startPosition = (4, 10);
-        const int startPositionX = 10;
+        //const Point startPosition = (20,4);
+        const int startPositionX = 20;
         const int startPositionY = 4;
 
 
