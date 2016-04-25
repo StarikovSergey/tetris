@@ -14,16 +14,13 @@ namespace tetris2
         static void Main(string[] args)
         {
             Console.SetBufferSize(80, 25);                      //размер консоли
-            //можно ли присвоить констанкте координаты точки?????
-            //const Point startPosition = (4, 10);
-            //const int startPositionY = 4;
-            //const int startPositionX = 10;
+            
             RenderingConsole Render = new RenderingConsole();  //отрисовщик
             Glass glass = new Glass();                          //стакан
             Game game = new Game();
             Figure[] arrF = game.CreateArrFigure();
             Figure randomFigure = game.GetRandomFigure(arrF);
-            randomFigure.SetStartPosition();
+            //randomFigure.SetStartPosition();
             ManagerCollide mc = new ManagerCollide();
 
 
@@ -82,7 +79,7 @@ namespace tetris2
                     glass.addtoBattom(randomFigure);
                     Render.Draw(glass.GetList(), '*');
                     randomFigure = game.GetRandomFigure(arrF);
-                    randomFigure.SetStartPosition();
+                    //randomFigure.SetStartPosition();
                 }
                 else
                 /*иначе если коллизии не произошло*/
