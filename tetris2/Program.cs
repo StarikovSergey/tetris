@@ -21,68 +21,68 @@ namespace tetris2
             Figure[] arrF = game.CreateArrFigure();
             Figure randomFigure = game.GetRandomFigure(arrF);
             ManagerCollide mc = new ManagerCollide();
-            
+
+            TimeSpan timeSpan = new TimeSpan(0, 0, 0, 0, 300);
+
             while (true)
             {
-
-                if (Console.KeyAvailable)   //проверка нажатия клавиш
+                DateTime currentTimes = DateTime.Now;
+                while (DateTime.Now < currentTimes + timeSpan)
                 {
-                    ConsoleKeyInfo key = Console.ReadKey();
-                    //randomFigure.HandleKey(key.Key);
-                    if (key.Key == ConsoleKey.Enter)
+                    if (Console.KeyAvailable)   //проверка нажатия клавиш
                     {
-                        randomFigure.moveRotate();
-                        if (mc.Collide(glass.GetFigureWalls(), randomFigure))
-                        //отмена разворота фигуры при пересечении со стенками стакана
+                        ConsoleKeyInfo key = Console.ReadKey();
+                        //randomFigure.HandleKey(key.Key);
+                        if (key.Key == ConsoleKey.Enter)
                         {
-                            randomFigure.RevertRotate();
-                        }
-                        else if (mc.Collide(glass.GetFigureBottom(), randomFigure))
-                        //отмена разворота фигуры при пересечении со стаканом
-                        {
-                            randomFigure.RevertRotate();
-                        }
+                            randomFigure.moveRotate();
+                            if (mc.Collide(glass.GetFigureWalls(), randomFigure))
+                            //отмена разворота фигуры при пересечении со стенками стакана
+                            {
+                                randomFigure.RevertRotate();
+                            }
+                            else if (mc.Collide(glass.GetFigureBottom(), randomFigure))
+                            //отмена разворота фигуры при пересечении со стаканом
+                            {
+                                randomFigure.RevertRotate();
+                            }
 
+                        }
+                        else if (key.Key == ConsoleKey.LeftArrow || key.Key == ConsoleKey.RightArrow)
+                        {
+                            if (key.Key == ConsoleKey.LeftArrow)
+                            { randomFigure.moveLeftPerStep(); }
+                            else if (key.Key == ConsoleKey.RightArrow)
+                            { randomFigure.moveRightPerStep(); }
+
+                            if (mc.Collide(glass.GetFigureWalls(), randomFigure))
+                            //отмена последнего действия при врезании в стену
+                            {
+                                randomFigure.DiscardLastMove();
+                            }
+                            else if (mc.Collide(glass.GetFigureBottom(), randomFigure))
+                            //проверка что бы фигура не прилипала к стакану если есть возможность падать дальше
+                            {
+                                randomFigure.DiscardLastMove();
+                            }
+                        }
                     }
-                    else if (key.Key == ConsoleKey.LeftArrow || key.Key == ConsoleKey.RightArrow)
+
+                    if (mc.Collide(glass.GetFigureBottom(), randomFigure))
+                    //если просходит коллизия между дном стакана и фигурой
+                    //фигура откатывается в предыдущую позицию, добавляется в стакан и отрисовывается.
+                    //далее рандомной фируге присваевается новое значение и она устанавливается в стартовую позицию.
                     {
-                        if (key.Key == ConsoleKey.LeftArrow)
-                        {randomFigure.moveLeftPerStep(); }
-                        else if (key.Key == ConsoleKey.RightArrow)
-                        { randomFigure.moveRightPerStep(); }
-
-                        if (mc.Collide(glass.GetFigureWalls(), randomFigure))
-                        //отмена последнего действия при врезании в стену
-                        {
-                            randomFigure.DiscardLastMove();
-                        }
-                        else if (mc.Collide(glass.GetFigureBottom(), randomFigure))
-                        //проверка что бы фигура не прилипала к стакану если есть возможность падать дальше
-                        {
-                            randomFigure.DiscardLastMove();
-                        }
-
+                        randomFigure.DiscardLastMove();
+                        glass.addtoBattom(randomFigure);
+                        randomFigure = game.GetRandomFigure(arrF);                      
                     }
                 }
+                game.Draw(glass, randomFigure);
+                randomFigure.moveDownPerStep(); //движение фигуры вниз
 
-                if (mc.Collide(glass.GetFigureBottom(), randomFigure))
-                //если просходит коллизия между дном стакана и фигурой
-                //фигура откатывается в предыдущую позицию, добавляется в стакан и отрисовывается.
-                //далее рандомной фируге присваевается новое значение и она устанавливается в стартовую позицию.
-                {
-                    randomFigure.DiscardLastMove();
-                    glass.addtoBattom(randomFigure);
-                    randomFigure = game.GetRandomFigure(arrF);
-                }
-                else
-                /*иначе если коллизии не произошло*/
-                {
-                    game.Draw(glass, randomFigure);
-                    randomFigure.moveDownPerStep(); //движение фигуры вниз
-                    Thread.Sleep(300);  //задержка
-                }  
-                
             }
+
             Console.WriteLine("Game Over");
             Console.ReadKey();
         }
