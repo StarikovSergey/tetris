@@ -22,5 +22,11 @@ namespace tetris2
             }
             
         }
+
+        public void Draww()
+        {
+            Console.Write("ujk");
+            Console.ReadKey();
+        }
     }
 }

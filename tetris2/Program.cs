@@ -4,25 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+//using System.Timers;
 
 
 namespace tetris2
 {
     class Program
     {
-        
+
         static void Main(string[] args)
         {
             Console.SetBufferSize(80, 25);                      //размер консоли
-            
-            RenderingConsole Render = new RenderingConsole();  //отрисовщик
+
             Glass glass = new Glass();                          //стакан
             Game game = new Game();
             Figure[] arrF = game.CreateArrFigure();
             Figure randomFigure = game.GetRandomFigure(arrF);
             ManagerCollide mc = new ManagerCollide();
-
-
+            
             while (true)
             {
 
@@ -43,12 +42,12 @@ namespace tetris2
                         {
                             randomFigure.RevertRotate();
                         }
-                        
+
                     }
                     else if (key.Key == ConsoleKey.LeftArrow || key.Key == ConsoleKey.RightArrow)
                     {
                         if (key.Key == ConsoleKey.LeftArrow)
-                        { randomFigure.moveLeftPerStep(); }
+                        {randomFigure.moveLeftPerStep(); }
                         else if (key.Key == ConsoleKey.RightArrow)
                         { randomFigure.moveRightPerStep(); }
 
@@ -62,7 +61,7 @@ namespace tetris2
                         {
                             randomFigure.DiscardLastMove();
                         }
-                        
+
                     }
                 }
 
@@ -73,18 +72,16 @@ namespace tetris2
                 {
                     randomFigure.DiscardLastMove();
                     glass.addtoBattom(randomFigure);
-                    Render.Draw(glass.GetList(), '*');
                     randomFigure = game.GetRandomFigure(arrF);
                 }
                 else
                 /*иначе если коллизии не произошло*/
                 {
-                    Render.Draw(glass.GetList(), '*');     //отрисовка стакана
-                    Render.Draw(randomFigure.GetCurrent(), '=');   // отрисовка фигуры
+                    game.Draw(glass, randomFigure);
                     randomFigure.moveDownPerStep(); //движение фигуры вниз
                     Thread.Sleep(300);  //задержка
-                    Render.Clear(); //очистка экрана
-                }
+                }  
+                
             }
             Console.WriteLine("Game Over");
             Console.ReadKey();

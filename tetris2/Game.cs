@@ -9,6 +9,8 @@ namespace tetris2
     class Game
     {
         Random random = new Random();
+        RenderingConsole Render = new RenderingConsole();  //отрисовщик
+
 
         public Figure[] CreateArrFigure()
         {
@@ -30,6 +32,11 @@ namespace tetris2
             return randomFigure;
         }
 
-       
+        public void Draw(Glass glass, Figure randomFigure )
+        {
+            Render.Clear(); //очистка экрана
+            Render.Draw(glass.GetList(), '*');     //отрисовка стакана
+            Render.Draw(randomFigure.GetCurrent(), '=');   // отрисовка фигуры
+        }
     }
 }
